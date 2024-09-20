@@ -14,6 +14,8 @@ class UneFenetre extends JFrame
 	// afficher la fenetre
 	// lancer laThread
 
+
+        // Code réutilisé de https://www.thoughtco.com/create-a-simple-window-using-jframe-2034069
         JFrame frame = new JFrame("Simple GUI");
         frame.setPreferredSize(new Dimension(LARG, HAUT));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

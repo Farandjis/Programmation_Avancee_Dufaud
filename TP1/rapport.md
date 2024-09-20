@@ -9,3 +9,5 @@ INF.3-FI
 </div>
 <hr>
 
+Rappel définitions : <br>
+Association : relation entre deux classes
