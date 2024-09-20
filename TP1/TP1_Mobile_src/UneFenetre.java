@@ -13,8 +13,8 @@ class UneFenetre extends JFrame
 	// creer une thread laThread avec sonMobile
 	// afficher la fenetre
 	// lancer laThread
-        
 
+        /*
         // Code réutilisé de https://www.thoughtco.com/create-a-simple-window-using-jframe-2034069
 
         JFrame frame = new JFrame("Simple GUI");
@@ -32,5 +32,17 @@ class UneFenetre extends JFrame
         SupportTache.start();
 
         frame.add(sonMobile);
+        */
+
+
+        // CORRECTION DE M. DUFAUD
+        super("Le Mobile");
+        Container leConteneur = getContentPane();
+        sonMobile = new UnMobile(LARG, HAUT);
+        leConteneur.add(sonMobile);
+        Thread laTache = new Thread(sonMobile);
+        laTache.start();
+        setSize(LARG, HAUT);
+        setVisible(true);
     }
 }
