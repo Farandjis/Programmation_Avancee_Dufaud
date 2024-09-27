@@ -1,11 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 class UneFenetre extends JFrame 
 {
     UnMobile sonMobile;
     private final int LARG=400, HAUT=250;
-    
+    boolean actif;
     public UneFenetre()
     {
 	// TODO 
@@ -35,14 +37,78 @@ class UneFenetre extends JFrame
         */
 
 
-        // CORRECTION DE M. DUFAUD
+
+
+        // Une partie de la CORRECTION DE M. DUFAUD
         super("Le Mobile");
         Container leConteneur = getContentPane();
         sonMobile = new UnMobile(LARG, HAUT);
         leConteneur.add(sonMobile);
+
+        JButton button = new JButton("Cliquez-moi !");
+        actif = true;
+
+        // Ajouter le panneau à la fenêtre
+        leConteneur.add(button, BorderLayout.EAST);
+
         Thread laTache = new Thread(sonMobile);
         laTache.start();
-        setSize(LARG, HAUT);
+        setSize(LARG+150, HAUT);
         setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //=====
+
+
+
+
+
+        // Ajouter un ActionListener au bouton
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Bouton cliqué !");
+                actif = !actif;
+
+                if (!actif){
+                    /*
+                    // marche pas, la fenêtre se fige
+                    synchronized (laTache) {
+                        // Suspendre le thread en attente
+                        try {
+                            laTache.wait();
+                        } catch (InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                    */
+
+                    laTache.suspend(); // inutilisable ?
+
+                }
+                else {
+                    /*
+                    synchronized (laTache) {
+                        laTache.notify(); // Réveille le thread
+                    }*/
+                }
+
+            }
+        });
+
+
+        //=====
+
+        while(true){
+
+            if ((!laTache.isAlive()) && actif){
+                System.out.println("--");
+                laTache.run();
+            }
+        }
+
+
+
+
     }
 }
