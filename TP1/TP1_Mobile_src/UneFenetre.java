@@ -6,7 +6,8 @@ import javax.swing.*;
 class UneFenetre extends JFrame 
 {
     UnMobile sonMobile;
-    private final int LARG=400, HAUT=250;
+    UnMobile sonMobile2;
+    private final int LARG=800, HAUT=550;
     boolean actif;
     public UneFenetre()
     {
@@ -42,8 +43,20 @@ class UneFenetre extends JFrame
         // Une partie de la CORRECTION DE M. DUFAUD
         super("Le Mobile");
         Container leConteneur = getContentPane();
+        leConteneur.setLayout(new GridLayout(10,1));
+        /*
         sonMobile = new UnMobile(LARG, HAUT);
         leConteneur.add(sonMobile);
+        */
+
+        for (int i = 0; i < 10; i++){
+            sonMobile = new UnMobile(LARG, HAUT / 10);
+            leConteneur.add(sonMobile);
+            Thread laTache = new Thread(sonMobile);
+            laTache.start();
+        }
+
+
 
         JButton button = new JButton("Cliquez-moi !");
         actif = true;
@@ -51,11 +64,15 @@ class UneFenetre extends JFrame
         // Ajouter le panneau à la fenêtre
         leConteneur.add(button, BorderLayout.EAST);
 
-        Thread laTache = new Thread(sonMobile);
-        laTache.start();
+
         setSize(LARG+150, HAUT);
         setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        // --
+
+
 
         //=====
 
@@ -99,6 +116,7 @@ class UneFenetre extends JFrame
 
         //=====
 
+        /*
         while(true){
 
             if ((!laTache.isAlive()) && actif){
@@ -106,6 +124,8 @@ class UneFenetre extends JFrame
                 laTache.run();
             }
         }
+        */
+
 
 
 
