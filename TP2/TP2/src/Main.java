@@ -27,6 +27,20 @@ public class Main {
 
 		TD.start();
 		TD.monSemaphore.syncWait();
+
+
+
+		Affichage JE = new Affichage("j’entre en section critique\n");
+		Affichage JS = new Affichage("je sors de section critique");
+
+		System.out.println("\n");
+		JE.start();
+		JE.monSemaphore.syncWait();
+
+		JS.start();
+		JS.monSemaphore.syncWait();
+
+
 	}
 
 }
