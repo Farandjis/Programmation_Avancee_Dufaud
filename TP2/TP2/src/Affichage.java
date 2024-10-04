@@ -6,11 +6,15 @@ import java.lang.String;
 public class Affichage extends Thread{
 	String texte;
 	static Exclusion exclusionImpression = new Exclusion(); // static permet de dire que c'est un objet global à la classe, le même pour tous les threads.
-	SemaphoreBinaireDufaud monSemaphore = new SemaphoreBinaireDufaud(0);
+	SemaphoreBinaireDufaud sem;
 
 
 
-	public Affichage (String txt){texte=txt;}
+	public Affichage (String txt, SemaphoreBinaireDufaud sem)
+	{
+		texte=txt;
+		this.sem = sem;
+	}
 	
 	public void run(){
 		/*
@@ -27,6 +31,7 @@ public class Affichage extends Thread{
 		}
 		*/
 
+		sem.syncWait(); // On lance une boucle infini wait qui sera interrompu
         for (int i = 0; i < texte.length(); i++) {
 			System.out.print(texte.charAt(i));
 			try {
@@ -36,7 +41,7 @@ public class Affichage extends Thread{
 			;
 		}
 
-		monSemaphore.syncSignal(); // On interrompt la boucle wait lancé depuis Main.java, afin de libérer aux autres threads
+		sem.syncSignal(); // On interrompt la boucle wait
 
 
 	}

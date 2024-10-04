@@ -5,40 +5,41 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Affichage TA = new Affichage("AAA");
-		Affichage TB = new Affichage("BB");
-		Affichage TC = new Affichage("CCCC");
-		Affichage TD = new Affichage("DDDDDDDDDDD");
+
+		SemaphoreBinaireDufaud sem = new SemaphoreBinaireDufaud(1);
+
+		Affichage TA = new Affichage("AAA", sem);
+		Affichage TB = new Affichage("BB", sem);
+		Affichage TC = new Affichage("CCCC", sem);
+		Affichage TD = new Affichage("DDDDDDDDDDD", sem);
 
 
 
 
 
 		TB.start();
-		TB.monSemaphore.syncWait(); // On lance une boucle infini wait qui sera interrompu automatiquement par TB.
 
-		// Lorsque TB interrompt le semaphore, on reprend le programme normalement
 
-        TC.start(); // On donne la main à TC cette fois
-		TC.monSemaphore.syncWait();
+        TC.start();
+
 
 		TA.start();
-		TA.monSemaphore.syncWait();
+
 
 		TD.start();
-		TD.monSemaphore.syncWait();
 
 
 
-		Affichage JE = new Affichage("j’entre en section critique\n");
-		Affichage JS = new Affichage("je sors de section critique");
 
-		System.out.println("\n");
+		Affichage JE = new Affichage("j’entre en section critique\n", sem);
+		Affichage JS = new Affichage("je sors de section critique", sem);
+
+
 		JE.start();
-		JE.monSemaphore.syncWait();
+
 
 		JS.start();
-		JS.monSemaphore.syncWait();
+
 
 
 	}

@@ -35,8 +35,9 @@ Seulement, le lancement des threads ne sont pas ordonnés.<br>
 Le sémaphore utilise une variable "valeur", si c'est 0 : il bloque, si c'est 1 : il ne fait rien.
 Lorsque l'on fait syncWait via SemaphoreBinaire, il passe "valeur" à 0 et Semaphore fait wait.
 
-On créer l'objet dans l'objet Affichage, on l'enclenche après l'appel à notre méthode start d'Affichage.<br>
-Il bloque l'exécution de Main.java, le thread fonctionne seul de son côté.<br>
-Lorsqu'il termine, on modifie le sémaphore en faisant un syncSignal().<br>
-En cela, on libère Main.java qui va exécuter un nouveau thread (donc après avoir totalement terminé d'exécuté l'ancien thread).<br>
+On créer l'objet dans l'objet Main que l'on transmet à chaque thread lors de leur création.<br>
+Chaque thread possède le même sémaphore.<br>
+Lorsque le premier thread s'execute, il active le sémaphore en faisant syncWait ce qui bloque les autres.<br>
+Lorsqu'il termine, il libère le sémaphore en faisant un syncSignal().<br>
+En cela, un nouveau thread peut prendre la main (donc après avoir totalement terminé d'exécuté l'ancien thread).<br>
 <br><br>
