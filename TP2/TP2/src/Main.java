@@ -1,7 +1,3 @@
-import java.io.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.BufferedReader;
 import java.lang.String;
 
 public class Main {
@@ -19,18 +15,18 @@ public class Main {
 
 
 		TB.start();
-		TB.sem.syncWait(); // On lance une boucle infini wait qui sera interrompu automatiquement par TB.
+		TB.monSemaphore.syncWait(); // On lance une boucle infini wait qui sera interrompu automatiquement par TB.
 
 		// Lorsque TB interrompt le semaphore, on reprend le programme normalement
 
         TC.start(); // On donne la main à TC cette fois
-		TC.sem.syncWait();
+		TC.monSemaphore.syncWait();
 
 		TA.start();
-		TA.sem.syncWait();
+		TA.monSemaphore.syncWait();
 
 		TD.start();
-		TD.sem.syncWait();
+		TD.monSemaphore.syncWait();
 	}
 
 }

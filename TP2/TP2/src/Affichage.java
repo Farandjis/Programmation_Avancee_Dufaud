@@ -1,16 +1,12 @@
 /**
  * 
  */
-import java.io.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.BufferedReader;
 import java.lang.String;
 
 public class Affichage extends Thread{
 	String texte;
 	static Exclusion exclusionImpression = new Exclusion();
-	SemaphoreBinaireDufaud sem = new SemaphoreBinaireDufaud(0);
+	SemaphoreBinaireDufaud monSemaphore = new SemaphoreBinaireDufaud(0);
 
 	// static permet de dire que c'est un objet global à la classe, le même pour tous les threads.
 
@@ -40,7 +36,7 @@ public class Affichage extends Thread{
 			;
 		}
 
-		sem.syncSignal(); // On interrompt la boucle wait lancé depuis Main.java, afin de libérer aux autres threads
+		monSemaphore.syncSignal(); // On interrompt la boucle wait lancé depuis Main.java, afin de libérer aux autres threads
 
 
 	}

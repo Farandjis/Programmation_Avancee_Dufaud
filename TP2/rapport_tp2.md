@@ -29,3 +29,14 @@ Pour résoudre ce problème, nous pouvons utiliser la fonction Java synchronise.
 <br>
 Seulement, le lancement des threads ne sont pas ordonnés.
 <img src="img\conccurence_threads.png"/>
+<br><br>
+
+## Résolution 2 du problème (sémaphores)
+Le sémaphore utilise une variable "valeur", si c'est 0 : il bloque, si c'est 1 : il ne fait rien.
+Lorsque l'on fait syncWait via SemaphoreBinaire, il passe "valeur" à 0 et Semaphore fait wait.
+
+On créer l'objet dans l'objet Affichage, on l'enclenche après l'appel à notre méthode start d'Affichage.<br>
+Il bloque l'exécution de Main.java, le thread fonctionne seul de son côté.<br>
+Lorsqu'il termine, on modifie le sémaphore en faisant un syncSignal().<br>
+En cela, on libère Main.java qui va exécuter un nouveau thread (donc après avoir totalement terminé d'exécuté l'ancien thread).<br>
+<br><br>
