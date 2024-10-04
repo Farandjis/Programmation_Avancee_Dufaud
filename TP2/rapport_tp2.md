@@ -27,7 +27,7 @@ Plus particulièrement, la section critique est la boucle for de la classe Affic
 
 Pour résoudre ce problème, nous pouvons utiliser la fonction Java synchronise.<br>
 <br>
-Seulement, le lancement des threads ne sont pas ordonnés.
+Seulement, le lancement des threads ne sont pas ordonnés.<br>
 <img src="img\conccurence_threads.png"/>
 <br><br>
 
