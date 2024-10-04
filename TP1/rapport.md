@@ -30,3 +30,8 @@ si on a un pro qui dure ~10min, mettre une limite d'1h
 -> si c'est plus de 10min, c'est ok et ça s'arrête automatiquement
 -> si ça a planté et que ça continu de tourner, dans tous les cas 1h plus tard il s'arrête
 CF : Verrou MUTEX (cours) -> Mutual exclusion
+
+
+<br><br><br>
+Par rapport au mobile bouton pause :
+Je n'ai pas réussit. Le bouton change la valeur d'une variable pour empêcher la relance d'un nouveau thread.

@@ -83,7 +83,7 @@ class UneFenetre extends JFrame
                     }
                     */
 
-                    laTache.suspend(); // inutilisable ?
+                    // laTache.suspend(); // inutilisable ?
 
                 }
                 else {
