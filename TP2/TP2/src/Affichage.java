@@ -5,10 +5,10 @@ import java.lang.String;
 
 public class Affichage extends Thread{
 	String texte;
-	static Exclusion exclusionImpression = new Exclusion();
+	static Exclusion exclusionImpression = new Exclusion(); // static permet de dire que c'est un objet global à la classe, le même pour tous les threads.
 	SemaphoreBinaireDufaud monSemaphore = new SemaphoreBinaireDufaud(0);
 
-	// static permet de dire que c'est un objet global à la classe, le même pour tous les threads.
+
 
 	public Affichage (String txt){texte=txt;}
 	
