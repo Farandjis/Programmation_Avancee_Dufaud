@@ -9,7 +9,9 @@ INF3-FI
 </div>
 <hr>
 
-## Premier démarrage
+### Introduction : Comment se problème pourrait se présenter dans la vie courrante
+
+### Premier démarrage
 Lorsque nous démarrons le programme, les mots "AAA" et "BB" se mélange à l'affichage de manière aléatoire. On remarque davantage l'effet si on rajoute le mot "CCCC".<br>
 <br>
 Exemple, lancement 1 : BCAACBACC<br>
@@ -31,7 +33,7 @@ Seulement, le lancement des threads ne sont pas ordonnés.<br>
 <img src="img\conccurence_threads.png"/>
 <br><br>
 
-## Résolution 2 du problème (sémaphores)
+### Résolution 2 du problème (sémaphores)
 Le sémaphore utilise une variable "valeur", si c'est 0 : il bloque, si c'est 1 : il ne fait rien.
 Lorsque l'on fait syncWait via SemaphoreBinaire, il passe "valeur" à 0 et Semaphore fait wait.
 
