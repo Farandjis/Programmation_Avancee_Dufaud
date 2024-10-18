@@ -23,10 +23,10 @@ public class Client implements Runnable{
                     String lettre = bal.retirer();
                     if (lettre != null) {
                         System.out.println("[" + Thread.currentThread().getName() + "]" +
-                                " ** Réception : " + lettre);
+                                "- [" + bal.getStock() + "/" + bal.tailleMax + "] - ** Réception : " + lettre);
                     } else {
                         System.out.println("[" + Thread.currentThread().getName() + "]" +
-                                " ** la boîte au lettre était vide !");
+                                "- [" + bal.getStock() + "/" + bal.tailleMax + "] - ** la boîte au lettre était vide !");
                     }
                 }
                 sem.syncSignal();

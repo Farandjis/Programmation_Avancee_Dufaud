@@ -20,21 +20,21 @@ public class Postier implements Runnable {
                 // toutes les secondes un boulanger produit un pain
                 Random rand = new Random();
                 Thread.sleep((int) (Math.random() * 3000)) ;
-                // boolean added = bal.deposer(String.valueOf((char)(rand.nextInt(26) + 97))) ;
+                boolean added = bal.deposer(String.valueOf((char)(rand.nextInt(26) + 97))) ;
 
                 sem.syncWait();
                 if (!bal.cestFinit()) {
-                    System.out.println(">>> Votre message : ");
+                    // System.out.println(">>> Votre message : ");
 
-                    boolean added = bal.deposer(sc.nextLine());
+                    // boolean added = bal.deposer(sc.nextLine());
 
 
                     if (added) {
                         System.out.println("[" + Thread.currentThread().getName() + "]" +
-                                " __ je livre.");
+                                "- [" + bal.getStock() + "/" + bal.tailleMax + "] - __ je livre.");
                     } else {
                         System.out.println("[" + Thread.currentThread().getName() + "]" +
-                                " __ la boître au lettre est pleine !");
+                                "- [" + bal.getStock() + "/" + bal.tailleMax + "] - __ la boître au lettre est pleine !");
                     }
                 }
                 sem.syncSignal();

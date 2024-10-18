@@ -13,8 +13,8 @@ public class Main {
         // notre mangeur est aussi un runnable
         Client client =  new Client(bal, sem) ;
 
-        Thread [] boulangers =  new Thread[1] ;
-        Thread [] mangeurs =  new Thread[1] ;
+        Thread [] boulangers =  new Thread[9] ;
+        Thread [] mangeurs =  new Thread[10] ;
 
         // préparation des boulangers
         for (int i =  0 ; i < boulangers.length ; i++) {
