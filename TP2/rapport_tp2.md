@@ -9,9 +9,15 @@ INF3-FI
 </div>
 <hr>
 
-### Introduction : Comment se problème pourrait se présenter dans la vie courrante
+### Rappel définitions : <br>
+**Section critique :** Portion de code dans laquelle ne s’exécute qu’un thread à la fois. Une section critique est utilisée lorsque plusieurs thread accède à une même  ressource.
 
-### Premier démarrage
+### Introduction : Comment se problème pourrait se présenter dans la vie courrante
+Le TP2, au premier démarrage, se comporte comme ce que pourrait faire une imprimante si elle devait traiter en même temps deux documents.<br>
+Le risque est de faire un mélange des deux documents. Un autre problème est que l'exécution des threads ne sont pas ordonnés, ils s'exécutent dans un ordre aléatoire.<br>
+
+
+### Premier démarrage : Sans sémaphore
 Lorsque nous démarrons le programme, les mots "AAA" et "BB" se mélange à l'affichage de manière aléatoire. On remarque davantage l'effet si on rajoute le mot "CCCC".<br>
 <br>
 Exemple, lancement 1 : BCAACBACC<br>
