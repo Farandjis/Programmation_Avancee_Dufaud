@@ -14,7 +14,10 @@ d’actions.<br>
 **Thread (processeur) :** Processus lourd qui porte des processus léger<br>
 **Section critique :** Portion de code dans laquelle ne s’exécute qu’un thread à la fois. Une section critique est utilisée lorsque plusieurs thread accède à une même  ressource.
 
-
+<br><br>
+### Liens intéressants :
+**Sur l'API Concurrent (TP2 Boulangerie BAL) :** https://blog.paumard.org/cours/java-api/chap05-concurrent-queues.html<br>
+**Autre cours processus thread :** http://lycee.stanislas.info.free.fr/Interne/Processus/Processus.html<br>
 ## Les threads
 
 ### TP1 Partie 1 : Le mobile et son thread
