@@ -13,11 +13,27 @@ INF3-FI
 d’actions.<br>
 **Thread (processeur) :** Processus lourd qui porte des processus léger<br>
 **Section critique :** Portion de code dans laquelle ne s’exécute qu’un thread à la fois. Une section critique est utilisée lorsque plusieurs thread accède à une même  ressource.
+**BlockingQueue :** Cette interface est une extension de l'interface Queue<E>. L'interface Queue<E> permet de modéliser une file d'attente, de taille éventuellement fixée, et qui ne peut pas être modifiée. On peut ajouter, retirer un élément, ou examiner le suivant sans le retirer.<br>
+**Méthode de BQ, Poll :** La méthode poll de l'interface BlockingQueue renvoie la tête de BlockingQueue en supprimant cet élément. Si la file d'attente est vide, la méthode poll() attendra jusqu'à un certain temps qu'un élément devienne disponible.<br>
+**Méthode de BQ, Offer :** La méthode offer de BlockingQueue insère l'élément passé en paramètre à la queue de cette BlockingQueue si la file d'attente n'est pas pleine. Si la file d'attente est pleine, elle attendra un certain temps avant que de l'espace se libère.<br>
+**Thread.currentThread() :** Le thread principal est créé automatiquement lors du démarrage de notre programme. Cette méthode renvoie une référence au thread sur lequel elle est appelée. <br>
+**Mémoire partagée :** (de manière résumé) Tous les cœurs de processeur peuvent accéder à la même mémoire. Exemple (je pense) : un serveur
+**Mémoire distribuée :** (de manière résumé) La mémoire est formée par plusieurs ordinateurs connectés entre eux. Exemple : Le Cluster de Rpi, Les 4 Pi0 forment à elle seul une seule machine. 
+
 
 <br><br>
 ### Liens intéressants :
 **Sur l'API Concurrent (TP2 Boulangerie BAL) :** https://blog.paumard.org/cours/java-api/chap05-concurrent-queues.html<br>
 **Autre cours processus thread :** http://lycee.stanislas.info.free.fr/Interne/Processus/Processus.html<br>
+
+
+## Fonctionnement processeur
+
+
+
+
+
+
 ## Les threads
 
 ### TP1 Partie 1 : Le mobile et son thread
@@ -112,5 +128,24 @@ Le premier continu son chemin, il ne se trouve devant aucune porte, on se retrou
 <br>
 Le fait qu'il y ai 2 portes fait que les mobiles bloqués en venant de la droite se retrouve au tout devant de la file.<br>
 De ce fait, les mobiles plus éloignés ne passeront jamais. Le résultat dépend de la puissance de l'ordinateur.<br>
+
+
+## API Concurrent
+L'API Concurrent est conçue pour gérer des demandes simultanées provenant de processus, agin de faire de l'exécution parallèle.<br>
+
+
+### TP3 : La Boîte Au Lettre (BAL) et l'API Concurrent avec BlockingQueue
+Rappel de l'ennoncé du TP : Nous avons un ou plusieurs postiers, et un ou plusieurs destinataire utilisant une même boîte au lettre qui est limitée à 20 lettres.<br>
+Chaque personne est représenté par un thread ou chacun exerce une même action en fonction de son rôle (place une lettre si possible pour le postier, récupère une lettre si possible pour le client).<br>
+<br>
+Pour cela, nous avons utilisé la classe BlockingQueue de l'API Concurrent qui est dédié pour gérer ce genre de cas.<br>
+
+
+## Lien que l'on pourrait faire avec la SAÉ
+
+Parler de mpi
+Parler du cluster
+Parler de ce que l'on pourrait faire après (utiliser des threads et mettre un thread sur chaque rpi0)
+
 
 
