@@ -29,8 +29,18 @@ d’actions.<br>
 
 ## 0 - TD0 : Etude de notre ordinateur
 
-
-
+Avant de commencer un projet, il peut être utile de connaître notre architecture matériel.<br>
+C'est à dire voir les informations du système et voir quel est notre processeur, sa fréquence, si c'est un 64 ou 32bits, son nombre de coeurs, de thread et la taille de son cache.<br>
+Mais également connaître sa quantité de ram, son système d'exploitation et d'autres informations pouvant impacter l'utilisation de notre programme.<br>
+<br>
+Après cette première recherche, on fait une recherche sur internet pour récupérer la documentation et mieux apprendre quels sont les composants.<br>
+<br><br>
+Il est important de savoir sur quel système nous créeons notre logiciel pour dire quel est la configuration nécessaire pour l'utiliser.<br>
+Par exemple dans le cas de la mémoire RAM, en G25 les ordinateurs ont 8Go de RAM alors qu'en I21 ils en ont 16.<br>
+Si notre programme est conçu pour fonctionner avec 16Go de ram, il est possible qu'il s'exécute mal sur les PC de la salle G25.<br>
+Si nous voulons malgré tout l'utiliser, on va devoir distribuer la mémoire entre deux ordinateurs de la salle G25, puisque dans l'idée 2x8 = 16.<br>
+<br><br>
+Dans la même idée, un programme conçu pour fonctionner avec un processeur monocoeur peut disfonctionner avec un processeur multicoeur, si le logiciel n'est pas conçu pour gérer une tel architecture.<br>
 
 
 
@@ -57,7 +67,7 @@ Lorsqu'il est pris en charge, le mobile se déplace.<br>
 Lorsque l'on clique sur "Pause, on met en pausse le thread et notre processus passe à l'état "en attente". On le garde en mémoire, mais il ne fait rien, on ne s'en occupe pas.<br>
 Lorsque l'on clique sur "Reprendre", le thread reprend et le processus repasse à l'état "prête" avant de repasser dès que possible à l'était "en exécution".<br>
 <br>
-<img src="/media/matthieu/TOSHIBA/!CONTENU_CLEE_USB/!!ECOLE -----------------/!IUT----------------------------------/!INF3-FI/Programmation Avancée/TP1-Mobile---Dufaud/img/cycle_vie_processus.png" width="500"/>
+<img src="img/cycle_vie_processus.png" width="500"/>
 <br>
 *Source image : stephane_ramstein.gitlab.io*
 
