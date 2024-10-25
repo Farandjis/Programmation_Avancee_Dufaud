@@ -12,13 +12,13 @@ INF3-FI
 **Sémaphore :** Système de verrou permettant d'asurer qu’un objet ne subisse pas en même temps plusieurs séquences
 d’actions.<br>
 **Thread (processeur) :** Processus lourd qui porte des processus léger<br>
-**Section critique :** Portion de code dans laquelle ne s’exécute qu’un thread à la fois. Une section critique est utilisée lorsque plusieurs thread accède à une même  ressource.
+**Section critique :** Portion de code dans laquelle ne s’exécute qu’un thread à la fois. Une section critique est utilisée lorsque plusieurs thread accède à une même  ressource.<br>
 **BlockingQueue :** Cette interface est une extension de l'interface Queue<E>. L'interface Queue<E> permet de modéliser une file d'attente, de taille éventuellement fixée, et qui ne peut pas être modifiée. On peut ajouter, retirer un élément, ou examiner le suivant sans le retirer.<br>
 **Méthode de BQ, Poll :** La méthode poll de l'interface BlockingQueue renvoie la tête de BlockingQueue en supprimant cet élément. Si la file d'attente est vide, la méthode poll() attendra jusqu'à un certain temps qu'un élément devienne disponible.<br>
 **Méthode de BQ, Offer :** La méthode offer de BlockingQueue insère l'élément passé en paramètre à la queue de cette BlockingQueue si la file d'attente n'est pas pleine. Si la file d'attente est pleine, elle attendra un certain temps avant que de l'espace se libère.<br>
 **Thread.currentThread() :** Le thread principal est créé automatiquement lors du démarrage de notre programme. Cette méthode renvoie une référence au thread sur lequel elle est appelée. <br>
-**Mémoire partagée :** (de manière résumé) Tous les cœurs de processeur peuvent accéder à la même mémoire. Exemple (je pense) : un serveur
-**Mémoire distribuée :** (de manière résumé) La mémoire est formée par plusieurs ordinateurs connectés entre eux. Exemple : Le Cluster de Rpi, Les 4 Pi0 forment à elle seul une seule machine. 
+**Mémoire partagée :** (de manière résumée) Tous les cœurs de processeur peuvent accéder à la même mémoire. Exemple (je pense) : un serveur<br>
+**Mémoire distribuée :** (de manière résumée) La mémoire est formée par plusieurs ordinateurs connectés entre eux. Exemple : Le Cluster de Rpi, Les 4 Pi0 forment à elle seul une seule machine. <br>
 
 
 <br><br>
@@ -27,14 +27,14 @@ d’actions.<br>
 **Autre cours processus thread :** http://lycee.stanislas.info.free.fr/Interne/Processus/Processus.html<br>
 
 
-## Fonctionnement processeur
+## 0 - TD0 : Etude de notre ordinateur
 
 
 
 
 
 
-## Les threads
+## I - Les threads
 
 ### TP1 Partie 1 : Le mobile et son thread
 
@@ -68,7 +68,7 @@ Pour chacun, on leur crée un thread que l'on leur associe avec des paramètres 
 Chaque mobile avance indépendamment l'un des autres, vu qu'ils ont leur propre thread et leur propre objet mobile.
 
 
-## Les sémaphores
+## II - Les sémaphores
 ### Introduction : Comment se problème pourrait se présenter dans la vie courrante
 Le TP2, au premier démarrage, se comporte comme ce que pourrait faire une imprimante si elle devait traiter en même temps deux documents.<br>
 Le risque est de faire un mélange des deux documents. Un autre problème est que l'exécution des threads ne sont pas ordonnés, ils s'exécutent dans un ordre aléatoire.<br>
@@ -130,7 +130,7 @@ Le fait qu'il y ai 2 portes fait que les mobiles bloqués en venant de la droite
 De ce fait, les mobiles plus éloignés ne passeront jamais. Le résultat dépend de la puissance de l'ordinateur.<br>
 
 
-## API Concurrent
+## III - API Concurrent
 L'API Concurrent est conçue pour gérer des demandes simultanées provenant de processus, agin de faire de l'exécution parallèle.<br>
 
 
@@ -139,13 +139,44 @@ Rappel de l'ennoncé du TP : Nous avons un ou plusieurs postiers, et un ou plusi
 Chaque personne est représenté par un thread ou chacun exerce une même action en fonction de son rôle (place une lettre si possible pour le postier, récupère une lettre si possible pour le client).<br>
 <br>
 Pour cela, nous avons utilisé la classe BlockingQueue de l'API Concurrent qui est dédié pour gérer ce genre de cas.<br>
+<br>
+Nous pouvons également utiliser les sémaphores.<br>
+Ici, la section se trouve lorsque le client ou le postier intéragi avec la boîte au lettre puis nous informe de ce qu'il en est.<br>
+Le risque est qu'entre le moment où le postier poste et nous informe, un client récupère la lettre.<br>
+Dans ce scénario, le client récupère la lettre n°X avant que le postier annonce son dépôt. De ce fait, on pourrait croire que c'est une deuxième lettre n°X.
+Problème, à la réception ce sera la lettre n°E...<br>
+Le sémaphore permet de laisser le temps à chacun de terminer son action. Cela me fait penser aux transactions en SQL afin d'empêcher l'incohérence de données lorsque deux utilisateurs manipule une base de données.<br>
 
 
-## Lien que l'on pourrait faire avec la SAÉ
+## IV - Lien que l'on pourrait faire avec la SAÉ (le 25/10/2024)
+Notre SAE se porte sur les calculs parallèles et distribuées, c'est à dire des calculs qui seront calculés sur 4 RaspberryPi 0.<br>
+On peut tout de suite imaginer l'utilisation de thread et de sémaphore.<br>
+<br>
+Les informations tirés viennent du rapport d'installation du système de la SAE (2-fonctionnement_calculs_paralleles_distribues.md).<br>
+Cette partie n'est qu'un résumé.<br>
 
-Parler de mpi
-Parler du cluster
-Parler de ce que l'on pourrait faire après (utiliser des threads et mettre un thread sur chaque rpi0)
+### MPI
+MPI (Message Passing Interface) est une bibliothèque avec un ensemble de fonctions standardisées pour les architectures à mémoire distribuée.<br>
+MPI permet d'exploiter plusieurs nœuds de calcul reliés par un réseau de communication.<br>
+L'objectif est de tirer parti de la présence de plusieurs cœurs de processeurs.<br>
+<br><br>
+Il existe une commande mpirun qui permet à l'aide ses options de répartir l'exécution d'un programme sur plusieurs machines et de leur attribué un nombre de processus chacun.<br>
+Plus un RPi possède de processus dédiés au programme, plus celui-ci calculera au détriment des autres.<br>
+Nous avons testé cette commande sur un script Python calculant les X premiers nombre premiers.<br>
+<br>
+Ce ne sont que des suppositions, **les explications données n'ont pas été vérifié et peuvent être fausse** :
+mpirun divise le processus initial du programme en plusieurs thread réparti sur chacune des machines.<br>
+Il n'y a pas vraiment de sémaphore : on a pas besoin de protéger une ressource en particulier, seulement, un processus ne peut utiliser un autre que quand il est disponible.<br>
+
+### Le cluster
+Notre cluster de RaspberryPi suit l'architecture à mémoire distribuée. Chaque Raspberry Pi dispose de sa propre mémoire (RAM) et la partage avec les autres Pi0 à l'aide du clusterhat.<br>
+
+
+### Comment ce cours peut nous aider
+Notre cours de Programmation Avancée nous permet de mieux comprendre le fonctionnement de notre cluster.<br>
+Par ailleurs, pour que notre programme gagne en efficacité, il est tout à fait plausible qu'on devra créer et répartir nous même certains thread sur les RPi et utiliser des sémaphores.<br>
+On pourra ainsi étudier les différences de performances et utiliser les atouts du cluster.<br>
+
 
 
 
