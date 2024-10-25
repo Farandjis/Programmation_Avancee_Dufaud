@@ -68,6 +68,9 @@ Pour chacun, on leur crée un thread que l'on leur associe avec des paramètres 
 Chaque mobile avance indépendamment l'un des autres, vu qu'ils ont leur propre thread et leur propre objet mobile.
 
 
+### TP1 : Représentation UML
+<img src="img\tp1_uml.png" width="300"/>
+
 ## II - Les sémaphores
 ### Introduction : Comment se problème pourrait se présenter dans la vie courrante
 Le TP2, au premier démarrage, se comporte comme ce que pourrait faire une imprimante si elle devait traiter en même temps deux documents.<br>
@@ -146,6 +149,10 @@ Le risque est qu'entre le moment où le postier poste et nous informe, un client
 Dans ce scénario, le client récupère la lettre n°X avant que le postier annonce son dépôt. De ce fait, on pourrait croire que c'est une deuxième lettre n°X.
 Problème, à la réception ce sera la lettre n°E...<br>
 Le sémaphore permet de laisser le temps à chacun de terminer son action. Cela me fait penser aux transactions en SQL afin d'empêcher l'incohérence de données lorsque deux utilisateurs manipule une base de données.<br>
+
+
+### TP3 : Représentation UML
+<img src="img\tp3_uml.png" width="300"/>
 
 
 ## IV - Lien que l'on pourrait faire avec la SAÉ (le 25/10/2024)
