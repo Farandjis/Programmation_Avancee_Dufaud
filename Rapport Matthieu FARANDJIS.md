@@ -4,7 +4,13 @@ INF3-FI
 <div align="center">
 <img height="95" width="400" src="https://www.uvsq.fr/medias/photo/iut-velizy-villacoublay-logo-2020-ecran_1580904185110-jpg?ID_FICHE=214049" title="logo uvsq vélizy"/>
 </div>
+
 # Programmation Avancée - Rapport TP1 et TP2 fusionné
+
+**Remarques :**<br>
+Les explications données viennet de ce que j'ai compris des TP, du cours et de ressources trouvable sur internet.<br>
+J'ai brièvement utilisé ChatGPT, il me semble sur la distinction entre mémoire partagée et mémoire distribuée, uniquement pour être sur de ce que j'écrivais.<br>
+<br><br>
 
 ### Rappel définitions : <br>
 **Association :** relation entre deux classes<br>
