@@ -10,6 +10,7 @@ INF3-FI
 **Remarques :**<br>
 Les explications données viennet de ce que j'ai compris des TP, du cours et de ressources trouvable sur internet.<br>
 J'ai brièvement utilisé ChatGPT, il me semble sur la distinction entre mémoire partagée et mémoire distribuée, uniquement pour être sur de ce que j'écrivais.<br>
+J'ai également utilisé le site languagetool pour corriger les fautes d'orthographe et deepl pour m'aider à traduire certains textes qui étaient en anglais.<br>
 <br><br>
 
 ### Rappel définitions : <br>
